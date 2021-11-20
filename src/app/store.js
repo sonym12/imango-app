@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import useReducer from "../features/UserSlice";
+import userReducer from "../features/UserSlice";
+import photosReducer from "../features/PhotosSlice";
+import questionReducer from "../features/questionSlice"
 
 export default configureStore({
   reducer: {
-    user: useReducer,
+    user: userReducer,
+    photos: photosReducer,
+    questions: questionReducer,
   },
 });
