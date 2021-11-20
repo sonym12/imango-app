@@ -1,0 +1,70 @@
+.register {
+    background-color: #e9ebee;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register__container {
+    width: 612px;
+    height: 372px;
+    display :flex;
+    padding: 20px;
+    background-color: #e9ebee;
+    flex-direction: column;
+}
+
+.register__container > h1 {
+    font-weight: 630;
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.register__container > h3 {
+    font-weight: 330;
+    color:black;
+    font-size: 25px;
+    margin-bottom: 20px;
+    margin-left: 107px;
+}
+
+.register__container > form > center > input {
+    height: 33px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    background-color: white;
+    width: 396px;
+    border: 0.5px solid gray;
+}
+
+.register__container > form > center > input::-webkit-input-placeholder {
+    font-size: 22px;
+    color: rgb(170, 170, 170);
+    padding-left: 10px;
+    padding-top: 40px;
+}
+
+.register__register {
+    background-color: #5e994b;
+    border: none;
+    width: 196px;
+    height: 38px;
+    border-radius: 3px;
+    border: 1px sollid rgb(59, 110, 34);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.register__name {
+    height: 36px !important;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 0.5px solid gray;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
