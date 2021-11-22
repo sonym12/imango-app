@@ -4,6 +4,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
+    count: 10,
   },
 
   reducers: {
@@ -16,9 +17,10 @@ export const userSlice = createSlice({
     },
   },
 });
+console.log("userSlice.actions", userSlice.actions);
 
 export const { login, logout } = userSlice.actions;
 
-export const selectUser = (state) => state.user.user;
+export const selectUser = (state) => state.user;
 
 export default userSlice.reducer;
