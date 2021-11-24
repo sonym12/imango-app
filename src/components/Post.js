@@ -3,6 +3,8 @@ import "./Post.css";
 import { Avatar } from "@material-ui/core";
 import { db } from "../Firebase";
 import firebase from "firebase";
+import { setAllPostsComments, selectComments } from '../features/PostsSlice';
+import { useDispatch, useSelector } from "react-redux";
 
 function Post({
   postId,
@@ -13,11 +15,12 @@ function Post({
   imageUrl,
   noLikes,
 }) {
-  const [comments, setComments] = useState([]);
+  const allPostsComments = useSelector(selectComments);
+  const comments = allPostsComments.find(post => post.postId === postId)?.comments || [];
+  const dispatch = useDispatch();
   const [comment, setComment] = useState("");
   const [show, setShow] = useState("like2");
   const [show2, setShow2] = useState("textforlike");
-
   useEffect(() => {
     let unsubscribe;
     if (postId) {
@@ -27,7 +30,7 @@ function Post({
         .collection("comments")
         .orderBy("timestamp", "desc")
         .onSnapshot((snapshot) => {
-          setComments(snapshot.docs.map((doc) => doc.data()));
+          dispatch(setAllPostsComments({postId, comments: snapshot.docs.map((doc) => doc.data())}));
         });
     }
     return () => {

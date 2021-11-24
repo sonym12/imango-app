@@ -5,27 +5,29 @@ import { db } from "../Firebase";
 import { useHistory } from "react-router-dom";
 import ImageUpload from "./ImageUpload";
 import Post from "./Post.js";
+import { selectPosts, setPosts } from '../features/PostsSlice';
+import { useDispatch, useSelector } from "react-redux";
 
 function Posts({ user }) {
+  const posts = useSelector(selectPosts);
+  const dispatch = useDispatch();
+  console.log("posts", posts);
   const history = useHistory("");
-  const [posts, setPosts] = useState([]);
 
-  console.log(user);
-
-  if (user === undefined) {
-    history.push("/login");
-  }
+  // if (user === null) {
+  //   history.push("/login");
+  // }
 
   useEffect(() => {
     db.collection("posts")
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
-        setPosts(
+        dispatch(setPosts(
           snapshot.docs.map((doc) => ({
             id: doc.id,
             post: doc.data(),
           }))
-        );
+        ));
       });
   }, []);
 
